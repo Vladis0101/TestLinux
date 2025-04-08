@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ошибка погоды</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            color: #343a40;
+        }
+        .error-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #dc3545;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .city-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1>Ошибка</h1>
+        <p>{{ error }}</p>
+
+        <div class="city-list">
+            <h3>Доступные города Беларуси:</h3>
+            <ul>
+                <li><a href="/weather/minsk/">Минск</a></li>
+                <li><a href="/weather/gomel/">Гомель</a></li>
+                <li><a href="/weather/grodno/">Гродно</a></li>
+                <li><a href="/weather/vitebsk/">Витебск</a></li>
+                <li><a href="/weather/brest/">Брест</a></li>
+                <li><a href="/weather/mogilev/">Могилёв</a></li>
+            </ul>
+        </div>
+
+        <a href="/" class="btn">На главную</a>
+    </div>
+</body>
+</html>

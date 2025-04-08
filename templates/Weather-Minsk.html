@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Погода в {{ weather.city }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .weather-card {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px;
+            background: linear-gradient(135deg, #72b5f7 0%, #2678d6 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            color: white;
+            text-align: center;
+        }
+        .city-name {
+            font-size: 2.2em;
+            margin-bottom: 5px;
+        }
+        .current-temp {
+            font-size: 4em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .weather-desc {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            text-transform: capitalize;
+        }
+        .weather-icon img {
+            width: 120px;
+            height: 120px;
+        }
+        .details {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            background-color: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+        }
+        .detail-item {
+            margin: 0 10px;
+        }
+        .detail-value {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: white;
+            color: #2678d6;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+        <div class="welcome-message">
+            {% if 'user' in session %}
+                Привет, {{ session.user.first_name }}!
+            {% else %}
+                Добро пожаловать!
+            {% endif %}
+        </div>
+    </div>
+    <div class="weather-card">
+        <div class="city-name">{{ weather.city }}, Беларусь</div>
+
+        <div class="weather-icon">
+            <img src="http://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="{{ weather.description }}">
+        </div>
+
+        <div class="current-temp">{{ weather.temp }}°C</div>
+        <div class="weather-desc">{{ weather.description }}</div>
+
+        <div class="details">
+            <div class="detail-item">
+                <div>Ощущается</div>
+                <div class="detail-value">{{ weather.feels_like }}°C</div>
+            </div>
+            <div class="detail-item">
+                <div>💧Влажность</div>
+                <div class="detail-value">{{ weather.humidity }}%</div>
+            </div>
+            <div class="detail-item">
+                <div>🌬️Ветер</div>
+                <div class="detail-value">{{ weather.wind_speed }} м/с</div>
+            </div>
+        </div>
+
+        <div class="details" style="margin-top: 15px; background-color: rgba(0,0,0,0.1);">
+            <div class="detail-item">
+                <div>🌅Восход</div>
+                <div class="detail-value">{{ weather.sunrise }}</div>
+            </div>
+            <div class="detail-item">
+                <div>🌇Закат</div>
+                <div class="detail-value">{{ weather.sunset }}</div>
+            </div>
+        </div>
+
+        <a href="/" class="back-btn">На главную</a>
+    </div>
+</body>
+</html>

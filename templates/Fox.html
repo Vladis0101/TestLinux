@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ count }} лис</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff6b00;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            border-radius: 8px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #ff6b00;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+        <div class="welcome-message">
+            {% if 'user' in session %}
+                Привет, {{ session.user.first_name }}!
+            {% else %}
+                Добро пожаловать!
+            {% endif %}
+        </div>
+    </div>
+    <h1>{{ count }} случайных лис</h1>
+    {% for fox in foxes %}
+        <img src="{{ fox }}" alt="Лиса">
+    {% endfor %}
+    <p>
+        <a href="/fox/{{ count }}/" class="btn">Ещё {{ count }} лис</a>
+        <a href="/" class="btn">На главную</a>
+    </p>
+</body>
+</html>
