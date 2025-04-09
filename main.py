@@ -139,7 +139,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/duck/')
-@login_required
+# @login_required
 def duck():
     try:
         response = requests.get('https://random-d.uk/api/random')
@@ -157,7 +157,7 @@ def duck():
         return f"Ошибка при получении утки: {str(e)}", 500
 
 @app.route('/fox/<int:count>/')
-@login_required
+# @login_required
 def fox(count):
     if count < 1 or count > 10:
         return "Можно запросить только от 1 до 10 лис", 400
@@ -180,7 +180,7 @@ def fox(count):
                            foxes=foxes)
 
 @app.route('/weather-minsk/')
-@login_required
+# @login_required
 def weather():
     try:
         weather_url = f"http://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={WEATHER_API_KEY}&units=metric&lang=ru"
@@ -208,12 +208,12 @@ def weather():
         return f"Ошибка при получении погоды: {str(e)}", 500
 
 @app.route('/belarus-cities/')
-@login_required
+# @login_required
 def belarus_cities():
     return render_template('belarus_cities.html', cities=BELARUSIAN_CITIES)
 
 @app.route('/weather/<city>/')
-@login_required
+# @login_required
 def city_weather(city):
     try:
         if city.lower() not in BELARUSIAN_CITIES:
