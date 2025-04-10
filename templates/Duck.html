@@ -1,43 +1,46 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Рандомная утка №{{ duck_id }}</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        a {
-            display: inline-block;
-            margin: 10px;
-            padding: 8px 15px;
-            background: #f0f0f0;
-            border-radius: 4px;
-            text-decoration: none;
-            color: #333;
-        }
-        nav {
-            background: #f0f0f0;
-            padding: 10px;
-            margin-bottom: 20px;
-        }
-        nav a {
-            margin-right: 15px;
-            text-decoration: none;
-            color: #333;
-        }
-    </style>
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>Рандомная утка №{{ duck_id }}</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            max-width: 800px;-->
+<!--            margin: 0 auto;-->
+<!--            padding: 20px;-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--        img {-->
+<!--            max-width: 100%;-->
+<!--            height: auto;-->
+<!--            border-radius: 8px;-->
+<!--            margin: 20px 0;-->
+<!--        }-->
+<!--        a {-->
+<!--            display: inline-block;-->
+<!--            margin: 10px;-->
+<!--            padding: 8px 15px;-->
+<!--            background: #f0f0f0;-->
+<!--            border-radius: 4px;-->
+<!--            text-decoration: none;-->
+<!--            color: #333;-->
+<!--        }-->
+<!--        nav {-->
+<!--            background: #f0f0f0;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--        nav a {-->
+<!--            margin-right: 15px;-->
+<!--            text-decoration: none;-->
+<!--            color: #333;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+{% extends "base.html" %}
+{% block title %}Рандомная утка №{{ duck_id }}{% endblock %}
+{% block content %}
 <div class="header">
         <div class="welcome-message">
             {% if 'user' in session %}
@@ -59,6 +62,7 @@
         <a href="/">На главную</a>
         <a href="/fox/1/">Рандомная лиса</a>
     </div>
-</body>
-</html>
+{% endblock %}
+<!--</body>-->
+<!--</html>-->
 
