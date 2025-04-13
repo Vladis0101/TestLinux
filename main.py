@@ -1,6 +1,4 @@
 import requests
-import aiohttp
-import asyncio
 from flask import Flask, render_template, redirect, url_for, request, abort, flash, session
 import os
 import re
@@ -158,38 +156,28 @@ def duck():
     except Exception as e:
         return f"Ошибка при получении утки: {str(e)}", 500
 
-
-async def fetch_fox(session):
-    try:
-        async with session.get('https://randomfox.ca/floof/', timeout=3) as response:
-            fox_data = await response.json()
-            return fox_data.get('image')
-    except (aiohttp.ClientError, asyncio.TimeoutError):
-        return None
-
-async def fetch_all_foxes(count):
-    async with aiohttp.ClientSession() as session:
-        tasks = [fetch_fox(session) for _ in range(count)]
-        return await asyncio.gather(*tasks)
-
 @app.route('/fox/<int:count>/')
+#@login_required
 def fox(count):
     if count < 1 or count > 10:
         return "Можно запросить только от 1 до 10 лис", 400
 
-    # Запускаем асинхронные запросы
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    foxes = loop.run_until_complete(fetch_all_foxes(count))
-    loop.close()
-
-    # Фильтруем None (неудачные запросы)
-    foxes = [img for img in foxes if img is not None]
+    foxes = []
+    for _ in range(count):
+        try:
+            response = requests.get('https://randomfox.ca/floof/', timeout=3)
+            fox_data = response.json()
+            if 'image' in fox_data:
+                foxes.append(fox_data['image'])
+        except:
+            continue
 
     if not foxes:
         return "Не удалось загрузить лис", 500
 
-    return render_template('fox.html', count=count, foxes=foxes)
+    return render_template('fox.html',
+                           count=count,
+                           foxes=foxes)
 
 @app.route('/weather-minsk/')
 # @login_required
