@@ -1,31 +1,26 @@
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Города Беларуси</title>-->
-<!--    <style>-->
-<!--        .cities-container {-->
-<!--            max-width: 600px;-->
-<!--            margin: 0 auto;-->
-<!--            padding: 20px;-->
-<!--            font-family: Arial, sans-serif;-->
-<!--        }-->
-<!--        .city-list {-->
-<!--            display: grid;-->
-<!--            grid-template-columns: repeat(3, 1fr);-->
-<!--            gap: 10px;-->
-<!--        }-->
-<!--        .city-link {-->
-<!--            padding: 8px;-->
-<!--            background: #f0f0f0;-->
-<!--            border-radius: 5px;-->
-<!--            text-align: center;-->
-<!--        }-->
-<!--    </style>-->
-<!--</head>-->
-<!--<body>-->
+ <style>
+        .cities-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .city-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .city-link {
+            padding: 8px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            text-align: center;
+        }
+    </style>
 {% extends "base.html" %}
 {% block title %}Города Беларуси{% endblock %}
 {% block content %}
+ <header>
 <div class="header">
         <div class="welcome-message">
             {% if 'user' in session %}
@@ -35,6 +30,8 @@
             {% endif %}
         </div>
     </div>
+</header>
+ <main>
     <div class="cities-container">
         <h1>Погода в городах Беларуси</h1>
         <div class="city-list">
@@ -43,6 +40,6 @@
             {% endfor %}
         </div>
     </div>
+ </main>
+ <footer></footer>
 {% endblock %}
-<!--</body>-->
-<!--</html>-->
