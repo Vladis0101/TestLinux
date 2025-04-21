@@ -3,7 +3,7 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.get("/", tags=['Привет'])
-async def home():
+async def home(q="*"):
     return {'id':1,'name':'Vasya'}
 
 
